@@ -40,18 +40,11 @@ public class MainActivity extends AppCompatActivity {
         String message = messageEditText.getText().toString();
 
         if (!to.isEmpty() && !subject.isEmpty() && !message.isEmpty()) {
-            // Create an intent with ACTION_SEND action
             Intent intent = new Intent(Intent.ACTION_SEND);
-
-            // Set the type to "message/rfc822" to ensure it opens an email client
             intent.setType("message/rfc822");
-
-            // Add email address, subject, and message to the intent
             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
             intent.putExtra(Intent.EXTRA_SUBJECT, subject);
             intent.putExtra(Intent.EXTRA_TEXT, message);
-
-            // Start the activity with the intent
             startActivity(Intent.createChooser(intent, "Send Email"));
         }
     }
